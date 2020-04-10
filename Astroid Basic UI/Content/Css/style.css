@@ -1,8 +1,8 @@
 ﻿:root {
     --container-bg-color: #333;
-    --left-bg-color: rgba(138, 1, 1, 0.7);
+    --left-bg-color: rgba(138, 1, 1, 0.67);
     --left-button-hover-color: rgba(161, 11, 11, 0.3);
-    --right-bg-color: rgba(16, 16, 16, 0.82);
+    --right-bg-color: rgba(16, 16, 16, 0.7);
     --right-button-hover-color: rgba(92, 92, 92, 0.3);
     --hover-width: 75%;
     --other-width: 25%;
@@ -21,26 +21,78 @@ html, body {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    cursor: default;
 }
+
+
+.halfContainer {
+    color: #fff;
+    position: relative;
+    left: 50%;
+    top: 10%;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    transform: translateX(-50%);
+}
+
+ul {
+    list-style: circle;
+}
+
+li {
+    font-size: 1.5rem;
+    color: #fff;
+    transition-duration: 0.4s;
+}
+
+    li:hover {
+        /*color:cyan;*/
+        cursor: pointer;
+        letter-spacing: 6px;
+        /*transform:rotateX(360deg);*/
+    }
 
 h1 {
     font-size: 4rem;
     color: #fff;
-    position: absolute;
+    position: relative;
     left: 50%;
     top: 20%;
     transform: translateX(-50%);
     white-space: nowrap;
+    transition-duration: 0.8s;
+}
+
+.right .halfContainer h1:hover {
+    color: red;
+}
+
+.left .halfContainer h1:hover {
+    color: black;
 }
 
 h2 {
     font-size: 2.5rem;
     color: #fff;
-    position: absolute;
+    position: relative;
     left: 50%;
     top: 33%;
     transform: translateX(-45%);
     white-space: nowrap;
+    transition-duration: 0.5s;
+}
+
+
+.right .halfContainer h2:hover {
+    color: red;
+    letter-spacing: 3px;
+    /*font-size:2.8rem;*/
+}
+
+.left .halfContainer h2:hover {
+    color: black;
+    letter-spacing: 3px;
 }
 
 .button {
@@ -142,6 +194,46 @@ h2 {
         z-index: 2;
     }
 
+.topDirek {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 9999;
+    /*background: purple;*/
+}
+
+.bottomDirek {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 9999;
+    /*background: purple;*/
+}
+    
+.ortaDirek {
+    transition-duration: 1.51s;
+    position: absolute;
+    left: 44%;
+    width: 13%;
+    height: 100%;
+    z-index: 9999;
+    /*background: rgba(138, 1, 1, 0.6);*/
+}
+
+.ortaLeft {
+    left: 50%;
+    width: 25%;
+}
+
+.ortaRight {
+    left: 25%;
+    width: 25%;
+}
+
+
 @media(max-width: 800px) {
     h1 {
         font-size: 2rem;
@@ -157,3 +249,95 @@ h2 {
         top: 70%;
     }
 }
+
+* {
+    box-sizing: border-box;
+}
+
+/* Style the navbar */
+.topnav {
+    float:initial;
+    overflow:hidden;    
+    background-color: transparent;
+    
+
+}
+
+    /* Navbar links */
+    .topnav a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        /* Navbar links on mouse-over */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Active/current link */
+        .topnav a.active {
+            background-color: #2196F3;
+            color: white;
+        }
+
+    /* Style the input container */
+    .topnav .login-container {
+        float: left;
+        position:relative;
+        left:32%;
+
+    }
+
+    /* Style the input field inside the navbar */
+    .topnav input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 14px;
+        border: none;
+        width: 180px; /* adjust as needed (as long as it doesn't break the topnav) */
+    }
+
+    /* Style the button inside the input container */
+    .topnav .login-container button {
+        float: inherit;
+        padding: 6px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+    }
+
+        .topnav .login-container button:hover {
+            background: #ccc;
+        }
+
+/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+    .topnav .login-container {
+        float: none;
+    }
+
+        .topnav a, .topnav input[type=text], .topnav .login-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+
+
