@@ -7,7 +7,7 @@
     <link href="Content/Css/style.css" rel="stylesheet" />
 </head>
 <body>
-    
+
 
     <img src="../Assets/Images/Asteroid-Icon.svg" style="    position:absolute;    left: 32%;    top: 7%;    width: 41%;    z-index: -1;opacity:0.8;" />
 
@@ -18,7 +18,7 @@
     </div>
 
     <div class="topDirek">
-        
+
     </div>
 
     <div class="bottomDirek">
@@ -30,7 +30,7 @@
                     <input type="text" name="name" class="form-control" placeholder="Tam Adınız">
                     <input type="text" name="phone" class="form-control" placeholder="Telefon Numaranız">
                     <input type="text" name="email" class="form-control" placeholder="E postanız">
-                    <button  id="my-form-button">Gönder</button>
+                    <button id="my-form-button">Gönder</button>
                     <p id="my-form-status"></p>
 
                 </form>
@@ -89,5 +89,53 @@
     </div>
 
     <script src="Content/Js/indexUtils.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+
+            // get the form elements defined in your form HTML above
+
+            var form = document.getElementById("my-form");
+            var button = document.getElementById("my-form-button");
+            var status = document.getElementById("my-form-status");
+
+            // Success and Error functions for after the form is submitted
+
+            function success() {
+                form.reset();
+                button.style = "display: none ";
+                status.innerHTML = "Teşekkürler!";
+            }
+
+            function error() {
+                status.innerHTML = "Bir Hata Oluştu!";
+            }
+
+            // handle the form submission event
+
+            form.addEventListener("submit", function (ev) {
+                ev.preventDefault();
+                var data = new FormData(form);
+                ajax(form.method, form.action, data, success, error);
+            });
+        });
+
+        // helper function for sending an AJAX request
+
+        function ajax(method, url, data, success, error) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                if (xhr.status === 200) {
+                    success(xhr.response, xhr.responseType);
+                } else {
+                    error(xhr.status, xhr.response, xhr.responseType);
+                }
+            };
+            xhr.send(data);
+        }
+    </script>
+
 </body>
 </html>
